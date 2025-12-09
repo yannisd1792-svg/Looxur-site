@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looxur - Créateur de Contenus</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav">
+            <h2 class="logo neon">Looxur</h2>
+
+            <div class="socials">
+                <a href="https://www.tiktok.com/@louxur._" target="_blank" class="btn">
+                    <i class="ri-tiktok-fill"></i> TikTok
+                </a>
+
+                <a href="https://discord.gg/ZE3CEEdj6t" target="_blank" class="btn">
+                    <i class="ri-discord-fill"></i> Discord
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SECTION HERO -->
+    <section class="top-page">
+        <div class="hero-content">
+            <h1 id="title-3d">Looxur</h1>
+            <p class="subtitle">Créateur de contenus — TikTok</p>
+        </div>
+    </section>
+
+    <!-- CURSEUR PERSONNALISÉ -->
+    <div class="cursor"></div>
+
+    <!-- SCRIPT EFFET 3D -->
+    <script>
+        const title = document.getElementById("title-3d");
+
+        document.addEventListener("mousemove", (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 30;
+            const y = (window.innerHeight / 2 - e.clientY) / 30;
+
+            title.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+
+        document.addEventListener("mouseleave", () => {
+            title.style.transform = "rotateY(0deg) rotateX(0deg)";
+        });
+    </script>
+
+    <!-- SCRIPT DU CURSEUR SMOOTH FOLLOW -->
+    <script>
+        const cursor = document.querySelector(".cursor");
+
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        const speed = 0.15; // vitesse du retard / smooth
+
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * speed;
+            cursorY += (mouseY - cursorY) * speed;
+
+            cursor.style.left = cursorX + "px";
+            cursor.style.top = cursorY + "px";
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+    </script>
+
+</body>
+</html>
